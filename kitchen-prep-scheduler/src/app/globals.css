@@ -1,0 +1,146 @@
+/* ============================================================
+   Kitchen Prep Scheduler — Global Styles & Design Tokens
+   ============================================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------
+   Font Variables
+   ------------------------------------------------------------ */
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-body: 'Noto Sans Vietnamese', sans-serif;
+
+  /* Warm kitchen palette */
+  --color-brand:       #f97316; /* orange-500  — primary CTA */
+  --color-brand-dark:  #ea580c; /* orange-600  — hover */
+  --color-brand-light: #fed7aa; /* orange-200  — backgrounds */
+  --color-surface:     #fffbf5; /* warm white  — card bg */
+  --color-surface-2:   #fef3c7; /* amber-100   — subtle bg */
+  --color-border:      #fcd34d; /* amber-300   — borders */
+  --color-text:        #292524; /* stone-800   — primary text */
+  --color-text-muted:  #78716c; /* stone-500   — secondary text */
+  --color-danger:      #ef4444; /* red-500     — restock warning */
+  --color-success:     #22c55e; /* green-500   — ok state */
+}
+
+/* ------------------------------------------------------------
+   Base resets
+   ------------------------------------------------------------ */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* tắt flash xanh khi tap mobile */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  /* Ngăn layout shift do thanh browser trên mobile */
+}
+
+/* ------------------------------------------------------------
+   Typography helpers
+   ------------------------------------------------------------ */
+.font-display {
+  font-family: var(--font-outfit);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* ------------------------------------------------------------
+   Scrollbar tùy chỉnh (Webkit)
+   ------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #fbbf24; /* amber-400 */
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f97316; /* orange-500 */
+}
+
+/* ------------------------------------------------------------
+   Focus ring — accessibility + warm style
+   ------------------------------------------------------------ */
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------
+   Touch-friendly tap targets (mobile)
+   ------------------------------------------------------------ */
+@media (pointer: coarse) {
+  button, a, [role="button"] {
+    min-height: 44px;
+  }
+}
+
+/* ------------------------------------------------------------
+   Print styles — KPI Results
+   ------------------------------------------------------------ */
+@media print {
+  nav, aside, button {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  .print-hide {
+    display: none !important;
+  }
+  .print-show {
+    display: block !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Animation utilities
+   ------------------------------------------------------------ */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-warm {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(249, 115, 22, 0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out both;
+}
+
+.animate-pulse-warm {
+  animation: pulse-warm 1.5s ease-in-out infinite;
+}
+
+/* Stagger cho lists */
+.stagger > *:nth-child(1)  { animation-delay: 0ms; }
+.stagger > *:nth-child(2)  { animation-delay: 60ms; }
+.stagger > *:nth-child(3)  { animation-delay: 120ms; }
+.stagger > *:nth-child(4)  { animation-delay: 180ms; }
+.stagger > *:nth-child(5)  { animation-delay: 240ms; }
+.stagger > *:nth-child(6)  { animation-delay: 300ms; }
